@@ -43,6 +43,7 @@ export const Service = ({ navigation }) => {
                 <Button
                   text='Solicitar Servicio'
                   color={service?.category?.hexColor}
+                  onClick={() => navigation.navigate('ServiceOptions', { service })}
                 />
               </View>
             </View>

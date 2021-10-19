@@ -5,6 +5,7 @@ import { Service } from '../pages/Service'
 import { Categories } from './../pages/Categories'
 import { Category } from './../pages/Category'
 import { Search } from './../pages/Search'
+import { ServiceOptions } from '../pages/ServiceOptions.jsx'
 
 const screens = {
   Inicio: {
@@ -21,11 +22,18 @@ const screens = {
   },
   Search: {
     screen: Search
+  },
+  ServiceOptions: {
+    screen: ServiceOptions,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Envío de información'
+    })
   }
 }
 
 const navigationOptions = {
   title: 'App Services',
+  //   initialRouteName: 'ServiceOptions',
   defaultNavigationOptions: {
     headerStyle: {
       backgroundColor: '#172A3A'

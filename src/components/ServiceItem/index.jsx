@@ -18,7 +18,6 @@ export const ServiceItem = ({ id, name, avatar, owner, description, category }) 
       <Text style={styles.description}>{description}</Text>
       <View style={styles.cardBottom}>
         <Text style={{ color: category.colorHex, fontWeight: '500' }}>{category.name}</Text>
-        <Button text='Contactar' color={category.colorHex} />
       </View>
     </View>
   )
