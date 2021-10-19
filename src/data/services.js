@@ -44,7 +44,7 @@ export default [
       id: 2,
       name: 'Mantenimiento',
       color: 'rgba(243, 75, 80, 0.25)',
-      hexColor: theme.colors.red,
+      colorHex: theme.colors.red,
       icon: <WrenchSVG fill={theme.colors.red} size={34} />
     },
     name: 'Mecanico',

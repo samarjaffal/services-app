@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, StyleSheet, Linking, Platform, Alert, TouchableNativeFeedback } from 'react-native'
+import { View, Text, StyleSheet, Linking, Platform, Alert, TouchableWithoutFeedback } from 'react-native'
 import { AppLayout } from '../components/Layout/AppLayout'
 import { CallSVG } from '../components/Icons/CallSVG'
 import { EmailSVG } from '../components/Icons/EmailSVG'
@@ -34,7 +34,7 @@ export const ServiceOptions = ({ navigation }) => {
         <Text style={styles.title}>¿Dónde desea recibir la información?</Text>
         <View style={{ marginTop: 15 }}>
           <View style={styles.card}>
-            <TouchableNativeFeedback onPress={() => callNumber(service?.user?.phone)}>
+            <TouchableWithoutFeedback onPress={() => callNumber(service?.user?.phone)}>
               <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                 <View style={theme.common.flexRow}>
                   <View style={styles.iconBackground}>
@@ -44,17 +44,19 @@ export const ServiceOptions = ({ navigation }) => {
                 </View>
                 <ArrowRightSVG fill={theme.colors.primary} />
               </View>
-            </TouchableNativeFeedback>
+            </TouchableWithoutFeedback>
             <View style={styles.hr} />
-            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-              <View style={theme.common.flexRow}>
-                <View style={styles.iconBackground}>
-                  <EmailSVG fill={theme.colors.white} />
+            <TouchableWithoutFeedback onPress={() => navigation.navigate('FillEmail', { service })}>
+              <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+                <View style={theme.common.flexRow}>
+                  <View style={styles.iconBackground}>
+                    <EmailSVG fill={theme.colors.white} />
+                  </View>
+                  <Text style={{ marginLeft: 12 }}>Email</Text>
                 </View>
-                <Text style={{ marginLeft: 12 }}>Email</Text>
+                <ArrowRightSVG fill={theme.colors.primary} />
               </View>
-              <ArrowRightSVG fill={theme.colors.primary} />
-            </View>
+            </TouchableWithoutFeedback>
           </View>
         </View>
         <View style={{ marginTop: 40, alignItems: 'center' }}>

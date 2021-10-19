@@ -6,6 +6,7 @@ import { Categories } from './../pages/Categories'
 import { Category } from './../pages/Category'
 import { Search } from './../pages/Search'
 import { ServiceOptions } from '../pages/ServiceOptions.jsx'
+import { FillEmail } from './../pages/FillEmail'
 
 const screens = {
   Inicio: {
@@ -28,12 +29,18 @@ const screens = {
     navigationOptions: ({ navigation }) => ({
       title: 'Envío de información'
     })
+  },
+  FillEmail: {
+    screen: FillEmail,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Llena los datos'
+    })
   }
 }
 
 const navigationOptions = {
   title: 'App Services',
-  //   initialRouteName: 'ServiceOptions',
+  // initialRouteName: 'FillEmail',
   defaultNavigationOptions: {
     headerStyle: {
       backgroundColor: '#172A3A'
