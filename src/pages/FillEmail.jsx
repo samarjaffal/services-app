@@ -6,14 +6,23 @@ import { Button } from '../components/common/Button'
 import { ServiceOverview } from './../components/ServiceOverview/index'
 import { useSendEmail } from '../hooks/useSendEmail'
 import { newServiceClient } from './../emails/DataTemplates/newServiceClient'
+import { newServiceProvider } from '../emails/DataTemplates/newServiceProvider'
 import theme from '../styles/theme'
 
 export const FillEmail = ({ navigation }) => {
   const [email, setEmail] = useState(null)
   const service = navigation.getParam('service')
+  const emailProvider = service.user.email
   const emailData = newServiceClient({ service, emailTo: email })
 
-  const { sendEmail, loading } = useSendEmail({ emailData })
+  const emailDataProvider = newServiceProvider({ service, emailTo: emailProvider })
+  const sendEmailClient = useSendEmail({ emailData })
+  const sendEmailProvider = useSendEmail({ emailData: emailDataProvider })
+
+  const sendEmails = async () => {
+    await sendEmailClient.sendEmail()
+    await sendEmailProvider.sendEmail()
+  }
 
   return (
     <AppLayout>
@@ -36,7 +45,7 @@ export const FillEmail = ({ navigation }) => {
               defaultValue={email}
             />
             <View style={{ marginTop: 30 }}>
-              <Button text={!loading ? 'Solicitar Servicio' : 'Cargando...'} color={theme.colors.primary} onClick={sendEmail} />
+              <Button text={!sendEmailClient.loading ? 'Solicitar Servicio' : 'Cargando...'} color={theme.colors.primary} onClick={sendEmails} />
             </View>
           </View>
         </View>
