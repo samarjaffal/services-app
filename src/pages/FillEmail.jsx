@@ -22,6 +22,7 @@ export const FillEmail = ({ navigation }) => {
   const sendEmails = async () => {
     await sendEmailClient.sendEmail()
     await sendEmailProvider.sendEmail()
+    navigation.navigate('SuccessEmailSent')
   }
 
   return (

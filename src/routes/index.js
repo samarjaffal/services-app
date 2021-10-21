@@ -7,6 +7,7 @@ import { Category } from './../pages/Category'
 import { Search } from './../pages/Search'
 import { ServiceOptions } from '../pages/ServiceOptions.jsx'
 import { FillEmail } from './../pages/FillEmail'
+import { SuccessEmailSent } from '../pages/SuccessEmailSent'
 
 const screens = {
   Inicio: {
@@ -34,6 +35,12 @@ const screens = {
     screen: FillEmail,
     navigationOptions: ({ navigation }) => ({
       title: 'Llena los datos'
+    })
+  },
+  SuccessEmailSent: {
+    screen: SuccessEmailSent,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Regresa al inicio'
     })
   }
 }
