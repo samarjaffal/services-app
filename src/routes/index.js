@@ -1,4 +1,5 @@
-import { createStackNavigator } from 'react-navigation-stack'
+import React from 'react'
+import { createStackNavigator, HeaderBackButton } from 'react-navigation-stack'
 import { createAppContainer } from 'react-navigation'
 import { Home } from '../pages/Home'
 import { Service } from '../pages/Service'
@@ -40,7 +41,8 @@ const screens = {
   SuccessEmailSent: {
     screen: SuccessEmailSent,
     navigationOptions: ({ navigation }) => ({
-      title: 'Regresa al inicio'
+      title: 'Regresa al inicio',
+      headerLeft: (<HeaderBackButton onPress={_ => navigation.navigate('Inicio')} tintColor='white' />)
     })
   }
 }
