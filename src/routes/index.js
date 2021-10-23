@@ -1,5 +1,5 @@
 import React from 'react'
-import { createStackNavigator, HeaderBackButton } from 'react-navigation-stack'
+import { createStackNavigator, HeaderBackButton, TransitionPresets } from 'react-navigation-stack'
 import { createAppContainer } from 'react-navigation'
 import { Home } from '../pages/Home'
 import { Service } from '../pages/Service'
@@ -51,6 +51,7 @@ const navigationOptions = {
   title: 'App Services',
   // initialRouteName: 'FillEmail',
   defaultNavigationOptions: {
+    ...TransitionPresets.SlideFromRightIOS,
     headerStyle: {
       backgroundColor: '#172A3A'
     },
