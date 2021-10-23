@@ -1,7 +1,6 @@
 import { CategoryItem } from '../CategoryItem'
-import { View, Text, StyleSheet, Pressable, TouchableOpacity } from 'react-native'
+import { ActivityIndicator, View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import { Button } from '../common/Button'
-import { useHistory } from 'react-router-native'
 import { categoryIcons } from '../../data/categories'
 import React from 'react'
 import theme from './../../styles/theme'
@@ -9,11 +8,19 @@ import { useCategories } from './../../hooks/useCategories'
 
 export const ListOfCategories = ({ navigation }) => {
   const { loading, categories } = useCategories()
-  const history = useHistory()
 
-  if (loading) return <Text>'Cargando...'</Text>
-
-  console.log({ categories })
+  if (loading) {
+    return (
+      <View style={{
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: 30
+      }}
+      ><ActivityIndicator size='small' color='#0000ff' />
+      </View>
+    )
+  }
 
   return (
     <View>

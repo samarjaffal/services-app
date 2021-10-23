@@ -1,15 +1,33 @@
 import React from 'react'
-import { StyleSheet, Text, View, TouchableWithoutFeedback, TouchableOpacity } from 'react-native'
+import { ActivityIndicator, StyleSheet, Text, View, TouchableWithoutFeedback, TouchableOpacity } from 'react-native'
 import { ServiceItem } from '../ServiceItem'
 import { Link } from 'react-router-native'
 import theme from './../../styles/theme'
 import { useServices } from '../../hooks/useServices'
 
-export const ListOfServices = ({ title = 'Servicios', categoryId, filterByName, navigation }) => {
-  const { loading, services } = useServices({ categoryId, filterByName })
+export const ListOfServices = ({ title = 'Servicios', categoryId, filterByName, selectedService, navigation }) => {
+  const { loading, services } = useServices({ categoryId, filterByName, selectedService })
 
   if (loading) {
-    return <Text style={{ color: 'white' }}>Cargando...</Text>
+    return (
+      <View style={{
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: 30
+      }}
+      ><ActivityIndicator size='small' color='#0000ff' />
+      </View>
+    )
+  }
+
+  if (services.length === 0) {
+    return (
+      <View>
+        <Text style={styles.title}>{title}</Text>
+        <Text style={{ color: theme.colors.white, fontSize: theme.fontSizes.subheading, marginTop: 10 }}> 🔍 No se encontraron servicios</Text>
+      </View>
+    )
   }
 
   return (

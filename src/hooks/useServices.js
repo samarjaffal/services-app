@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import { db } from '../../database/firebase'
 
-export const useServices = ({ categoryId, filterByName }) => {
+export const useServices = ({ categoryId, filterByName, selectedService }) => {
   const [services, setServices] = useState([])
   const [loading, setLoading] = useState(false)
 
@@ -35,7 +35,10 @@ export const useServices = ({ categoryId, filterByName }) => {
   }, [categoryId])
 
   const filterServices = (services) => {
-    const filteredServices = services.filter((service) => service.category.id === categoryId)
+    let filteredServices = services.filter((service) => service.category.id === categoryId)
+    if (selectedService) {
+      filteredServices = filteredServices.filter(service => service.id !== selectedService)
+    }
     setServices(filteredServices)
   }
 
