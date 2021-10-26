@@ -15,10 +15,11 @@ const styles = StyleSheet.create({
   }
 })
 
-export const Button = ({ color, text, textColor, onClick = null }) => {
+export const Button = ({ color, text, textColor, onClick = null, disabled = false }) => {
   const buttonStyles = {
     ...styles.button,
-    backgroundColor: color || styles.button.backgroundColor
+    backgroundColor: color || styles.button.backgroundColor,
+    opacity: disabled ? 0.5 : 1
   }
 
   const buttonText = {
@@ -27,7 +28,7 @@ export const Button = ({ color, text, textColor, onClick = null }) => {
   }
 
   return (
-    <Pressable style={({ pressed }) => [{ ...buttonStyles, opacity: pressed ? 0.6 : 1 }]} onPress={() => onClick ? onClick() : Alert.alert('Pressed')}>
+    <Pressable style={({ pressed }) => [{ ...buttonStyles }]} onPress={() => onClick && !disabled ? onClick() : null}>
       <Text style={buttonText}>{text || ''}</Text>
     </Pressable>
   )

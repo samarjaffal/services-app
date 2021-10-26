@@ -7,6 +7,7 @@ import { ServiceOverview } from './../components/ServiceOverview/index'
 import { useSendEmail } from '../hooks/useSendEmail'
 import { newServiceClient } from './../emails/DataTemplates/newServiceClient'
 import { newServiceProvider } from '../emails/DataTemplates/newServiceProvider'
+import { isValidEmail } from '../components/utils/validations'
 import theme from '../styles/theme'
 
 export const FillEmail = ({ navigation }) => {
@@ -46,7 +47,7 @@ export const FillEmail = ({ navigation }) => {
               defaultValue={email}
             />
             <View style={{ marginTop: 30 }}>
-              <Button text={!sendEmailClient.loading ? 'Solicitar Servicio' : 'Cargando...'} color={theme.colors.primary} onClick={sendEmails} />
+              <Button text={!sendEmailClient.loading ? 'Solicitar Servicio' : 'Cargando...'} color={theme.colors.primary} onClick={sendEmails} disabled={!isValidEmail(email)} />
             </View>
           </View>
         </View>
