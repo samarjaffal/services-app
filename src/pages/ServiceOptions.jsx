@@ -1,30 +1,15 @@
 import React from 'react'
-import { View, Text, StyleSheet, Linking, Platform, Alert, TouchableWithoutFeedback } from 'react-native'
+import { View, Text, StyleSheet, Linking, TouchableWithoutFeedback } from 'react-native'
 import { AppLayout } from '../components/Layout/AppLayout'
 import { CallSVG } from '../components/Icons/CallSVG'
 import { EmailSVG } from '../components/Icons/EmailSVG'
 import { ArrowRightSVG } from '../components/Icons/ArrowRightSVG'
 import { EmailGuySVG } from '../components/Icons/EmailGuySVG'
+import { WhatsappSVG } from '../components/Icons/WhatsappSVG'
+import { callNumber } from '../components/utils/callNumber'
 import theme from '../styles/theme'
 
-const callNumber = phone => {
-  // console.log('callNumber ----> ', phone)
-  let phoneNumber = phone
-  if (Platform.OS !== 'android') {
-    phoneNumber = `telprompt:${phone}`
-  } else {
-    phoneNumber = `tel:${phone}`
-  }
-  Linking.canOpenURL(phoneNumber)
-    .then(supported => {
-      if (!supported) {
-        Alert.alert('Phone number is not available')
-      } else {
-        return Linking.openURL(phoneNumber)
-      }
-    })
-    .catch(err => console.log(err))
-}
+const defaultWhatsappMessage = '👋 Hola, te he econtrado desde la app de Wunderhod y me gustaría contratar tus servicios. '
 
 export const ServiceOptions = ({ navigation }) => {
   const service = navigation.getParam('service')
@@ -46,13 +31,25 @@ export const ServiceOptions = ({ navigation }) => {
               </View>
             </TouchableWithoutFeedback>
             <View style={styles.hr} />
+            <TouchableWithoutFeedback onPress={() => Linking.openURL(`whatsapp://send?text=${defaultWhatsappMessage}&phone=${service?.user?.phone}`)}>
+              <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+                <View style={theme.common.flexRow}>
+                  <View style={styles.iconBackground}>
+                    <WhatsappSVG fill={theme.colors.white} />
+                  </View>
+                  <Text style={{ marginLeft: 12 }}>Enviar mensaje por Whatsapp</Text>
+                </View>
+                <ArrowRightSVG fill={theme.colors.primary} />
+              </View>
+            </TouchableWithoutFeedback>
+            <View style={styles.hr} />
             <TouchableWithoutFeedback onPress={() => navigation.navigate('FillEmail', { service })}>
               <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                 <View style={theme.common.flexRow}>
                   <View style={styles.iconBackground}>
                     <EmailSVG fill={theme.colors.white} />
                   </View>
-                  <Text style={{ marginLeft: 12 }}>Email</Text>
+                  <Text style={{ marginLeft: 12 }}>Recibir información por correo</Text>
                 </View>
                 <ArrowRightSVG fill={theme.colors.primary} />
               </View>
