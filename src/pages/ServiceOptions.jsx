@@ -9,7 +9,7 @@ import { WhatsappSVG } from '../components/Icons/WhatsappSVG'
 import { callNumber } from '../components/utils/callNumber'
 import theme from '../styles/theme'
 
-const defaultWhatsappMessage = '👋 Hola, te he econtrado desde la app de Wunderhod y me gustaría contratar tus servicios. '
+const defaultWhatsappMessage = '👋 Hola, te he encontrado desde la app de Wunderhod y me gustaría contratar tus servicios. '
 
 export const ServiceOptions = ({ navigation }) => {
   const service = navigation.getParam('service')
