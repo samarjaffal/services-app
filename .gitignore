@@ -105,3 +105,8 @@ dist
 
 #expo cache
 .expo/web/cache/*
+
+#env files
+.env
+.env-test
+.env-production
