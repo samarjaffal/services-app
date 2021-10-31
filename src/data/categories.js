@@ -3,13 +3,23 @@ import { FavoriteIconSVG } from './../components/Icons/FavoriteIconSVG/index'
 import { WrenchSVG } from '../components/Icons/WrenchSVG'
 import { CarSVG } from '../components/Icons/CarSVG'
 import { BookSVG } from '../components/Icons/BookSVG'
+import { JewelSVG } from '../components/Icons/JewelSVG'
+import { OtherSVG } from '../components/Icons/OtherSVG'
+import { HealthSVG } from '../components/Icons/HealthSVG'
+import { SocialSVG } from '../components/Icons/SocialSVG'
+import { TechSVG } from '../components/Icons/TechSVG'
 import theme from '../styles/theme'
 
 export const categoryIcons = {
   wrench: <WrenchSVG fill={theme.colors.red} size={34} />,
   favorite: <FavoriteIconSVG fill={theme.colors.purple} size={34} />,
   car: <CarSVG fill={theme.colors.yellow} size={34} />,
-  book: <BookSVG fill={theme.colors.blue} size={34} />
+  book: <BookSVG fill={theme.colors.blue} size={34} />,
+  beauty: <JewelSVG fill={theme.colors.primary} size={34} />,
+  other: <OtherSVG fill={theme.colors.red} size={34} />,
+  health: <HealthSVG fill={theme.colors.blue} size={34} />,
+  social: <SocialSVG fill={theme.colors.purple} size={34} />,
+  tech: <TechSVG fill={theme.colors.blue} size={34} />
 }
 
 export default [

@@ -19,15 +19,17 @@ export const Categories = ({ navigation }) => {
           <View style={styles.listContainer}>
             {categories.map((category) => {
               return (
-                <TouchableOpacity key={category.id} onPress={() => navigation.navigate('Category', { category })}>
-                  <CategoryItem
-                    name={category.name}
-                    color={category.colorRGBA}
-                    id={category.id}
-                    icon={categoryIcons[category.icon]}
-                    key={category.id}
-                  />
-                </TouchableOpacity>
+                <View style={{ flexBasis: '25%', marginTop: 20 }} key={category.id}>
+                  <TouchableOpacity onPress={() => navigation.navigate('Category', { category })}>
+                    <CategoryItem
+                      name={category.name}
+                      color={category.colorRGBA}
+                      id={category.id}
+                      icon={categoryIcons[category.icon]}
+                      key={category.id}
+                    />
+                  </TouchableOpacity>
+                </View>
               )
             })}
           </View>
@@ -51,7 +53,9 @@ const styles = StyleSheet.create({
   listContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    flexWrap: 'wrap',
+    flex: 1
   },
   flexRow: {
     flexDirection: 'row'
