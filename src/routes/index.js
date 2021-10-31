@@ -18,16 +18,28 @@ const screens = {
     })
   },
   Service: {
-    screen: Service
+    screen: Service,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Servicio'
+    })
   },
   Categories: {
-    screen: Categories
+    screen: Categories,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Categorías'
+    })
   },
   Category: {
-    screen: Category
+    screen: Category,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Categoría'
+    })
   },
   Search: {
-    screen: Search
+    screen: Search,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Busqueda'
+    })
   },
   ServiceOptions: {
     screen: ServiceOptions,

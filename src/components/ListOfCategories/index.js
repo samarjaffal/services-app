@@ -25,7 +25,7 @@ export const ListOfCategories = ({ navigation }) => {
   return (
     <View>
       <View style={styles.headerContainer}>
-        <Text style={styles.title}>Categorias</Text>
+        <Text style={styles.title}>Categorías</Text>
         <Button text='Ver más...' color={theme.colors.primary} textColor={theme.colors.white} onClick={() => navigation.navigate('Categories')} />
       </View>
 
