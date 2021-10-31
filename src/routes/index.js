@@ -12,7 +12,10 @@ import { SuccessEmailSent } from '../pages/SuccessEmailSent'
 
 const screens = {
   Inicio: {
-    screen: Home
+    screen: Home,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Wunderhod'
+    })
   },
   Service: {
     screen: Service

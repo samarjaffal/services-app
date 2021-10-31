@@ -10,8 +10,8 @@ export const ServiceItem = ({ id, name, avatar, owner, description, category }) 
         <View>
           <Image style={styles.avatar} source={{ uri: avatar }} />
         </View>
-        <View style={{ marginLeft: 10 }}>
-          <Text style={styles.service}>{name}</Text>
+        <View style={{ marginLeft: 10, paddingRight: 10 }}>
+          <Text style={styles.service} numberOfLines={1}>{name}</Text>
           <Text>{owner}</Text>
         </View>
       </View>
@@ -31,7 +31,8 @@ const styles = StyleSheet.create({
     ...theme.common.shadowProp
   },
   flexRow: {
-    flexDirection: 'row'
+    flexDirection: 'row',
+    maxWidth: '80%'
   },
   cardBottom: {
     flexDirection: 'row',

@@ -13,7 +13,7 @@ export const Service = ({ navigation }) => {
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.container}>
           <View style={styles.card}>
-            <Text style={{ color: service?.category?.hexColor }}>
+            <Text style={{ color: service?.category?.colorHex }}>
               {service?.category?.name}
             </Text>
             <View style={{ ...styles.flexCenter, marginTop: 20 }}>
@@ -35,14 +35,14 @@ export const Service = ({ navigation }) => {
             </View>
 
             <View style={{ marginTop: 20 }}>
-              <Text style={styles.textMessage}>
+              {/* <Text style={styles.textMessage}>
                 Al solicitar el servicio, recibirás un correo electrónico con los
                 datos de contacto.
-              </Text>
+              </Text> */}
               <View style={{ marginTop: 10 }}>
                 <Button
                   text='Solicitar Servicio'
-                  color={service?.category?.hexColor}
+                  color={service?.category?.colorHex}
                   onClick={() => navigation.navigate('ServiceOptions', { service })}
                 />
               </View>
@@ -80,13 +80,15 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   avatar: {
-    width: 70,
-    height: 70,
+    width: 120,
+    height: 120,
     borderRadius: 10
   },
   service: {
-    fontWeight: '500',
-    color: theme.colors.background
+    color: theme.colors.background,
+    marginBottom: 10,
+    textAlign: 'center',
+    fontWeight: 'bold'
   },
   description: {
     paddingVertical: 8,

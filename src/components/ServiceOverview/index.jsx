@@ -39,7 +39,8 @@ const styles = StyleSheet.create({
   },
   service: {
     color: theme.colors.background,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    textAlign: 'center'
   },
   flexCenter: {
     width: '100%',

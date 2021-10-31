@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, StyleSheet, Linking, TouchableWithoutFeedback } from 'react-native'
 import { AppLayout } from '../components/Layout/AppLayout'
 import { CallSVG } from '../components/Icons/CallSVG'
-import { EmailSVG } from '../components/Icons/EmailSVG'
+// import { EmailSVG } from '../components/Icons/EmailSVG'
 import { ArrowRightSVG } from '../components/Icons/ArrowRightSVG'
 import { EmailGuySVG } from '../components/Icons/EmailGuySVG'
 import { WhatsappSVG } from '../components/Icons/WhatsappSVG'
@@ -42,7 +42,7 @@ export const ServiceOptions = ({ navigation }) => {
                 <ArrowRightSVG fill={theme.colors.primary} />
               </View>
             </TouchableWithoutFeedback>
-            <View style={styles.hr} />
+            {/* <View style={styles.hr} />
             <TouchableWithoutFeedback onPress={() => navigation.navigate('FillEmail', { service })}>
               <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                 <View style={theme.common.flexRow}>
@@ -53,7 +53,7 @@ export const ServiceOptions = ({ navigation }) => {
                 </View>
                 <ArrowRightSVG fill={theme.colors.primary} />
               </View>
-            </TouchableWithoutFeedback>
+            </TouchableWithoutFeedback> */}
           </View>
         </View>
         <View style={{ marginTop: 40, alignItems: 'center' }}>
