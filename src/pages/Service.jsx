@@ -1,9 +1,41 @@
 import { AppLayout } from '../components/Layout/AppLayout'
 import { Button } from '../components/common/Button'
 import { ListOfServices } from './../components/ListOfServices/index'
-import { View, Text, StyleSheet, Image, ScrollView } from 'react-native'
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  ScrollView,
+  TouchableOpacity,
+  Linking
+} from 'react-native'
 import React from 'react'
 import theme from './../styles/theme'
+import { InstagramSVG } from '../components/Icons/InstagramSVG'
+import { FacebookSVG } from '../components/Icons/FacebookSVG'
+import { WebSVG } from '../components/Icons/WebSVG'
+
+const socialMedia = [
+  {
+    keyName: 'instagram',
+    name: 'Instagram',
+    color: '#D8336D',
+    icon: <InstagramSVG fill={theme.colors.white} />
+  },
+  {
+    keyName: 'facebook',
+    name: 'Facebook',
+    color: '#5744FF',
+    icon: <FacebookSVG fill={theme.colors.white} />
+  },
+  {
+    keyName: 'web',
+    name: 'Web',
+    color: '#2BDC94',
+    icon: <WebSVG fill={theme.colors.white} />
+  }
+]
 
 export const Service = ({ navigation }) => {
   const service = navigation.getParam('service')
@@ -34,6 +66,62 @@ export const Service = ({ navigation }) => {
               <Text style={styles.description}>Margarita, Pampatar.</Text>
             </View>
 
+            {/* Social medial */}
+            {(service.user.instagram ||
+              service.user.facebook ||
+              service.user.web) && (
+                <>
+                  <Text style={{ ...styles.information, marginTop: 10 }}>
+                    Visita mis redes sociales:
+                  </Text>
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                      justifyContent: 'space-between',
+                      flexWrap: 'wrap'
+                    }}
+                  >
+                    {socialMedia.map(
+                      (s, index) =>
+                        service?.user[s.keyName] && (
+                          <TouchableOpacity
+                            style={{
+                              flexBasis: '48%',
+                              marginTop: 10,
+                              padding: 10,
+                              backgroundColor: s.color,
+                              borderRadius: theme.borderRadius.secondary,
+                              alignSelf: 'flex-start'
+                            }}
+                            key={index}
+                            onPress={() =>
+                              Linking.openURL(service?.user[s.keyName])}
+                          >
+                            <View
+                              style={{
+                                flexDirection: 'row',
+                                alignItems: 'center'
+                              }}
+                            >
+                              {s.icon}
+                              <Text
+                                style={{
+                                  color: theme.colors.white,
+                                  fontWeight: theme.fontWeights.bold,
+                                  marginLeft: 10,
+                                  textAlign: 'center'
+                                }}
+                              >
+                                {s.name}
+                              </Text>
+                            </View>
+                          </TouchableOpacity>
+                        )
+                    )}
+                  </View>
+                </>
+            )}
+
             <View style={{ marginTop: 20 }}>
               {/* <Text style={styles.textMessage}>
                 Al solicitar el servicio, recibirás un correo electrónico con los
@@ -43,7 +131,8 @@ export const Service = ({ navigation }) => {
                 <Button
                   text='Solicitar Servicio'
                   color={service?.category?.colorHex}
-                  onClick={() => navigation.navigate('ServiceOptions', { service })}
+                  onClick={() =>
+                    navigation.navigate('ServiceOptions', { service })}
                 />
               </View>
             </View>
