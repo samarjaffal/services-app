@@ -5,7 +5,7 @@ import { Link } from 'react-router-native'
 import theme from './../../styles/theme'
 import { useServices } from '../../hooks/useServices'
 
-export const ListOfServices = ({ title = 'Servicios', categoryId, filterByName, selectedService, navigation }) => {
+export const ListOfServices = ({ title = 'Servicios', categoryId, filterByName, selectedService, navigation, slice = undefined }) => {
   const { loading, services } = useServices({ categoryId, filterByName, selectedService })
 
   if (loading) {
@@ -34,7 +34,7 @@ export const ListOfServices = ({ title = 'Servicios', categoryId, filterByName, 
     <View style={styles.container}>
       <Text style={styles.title}>{title}</Text>
       {
-          services.map((service, index) => (
+          services.slice(0, slice).map((service, index) => (
             <TouchableOpacity key={index} onPress={() => navigation.push('Service', { service })}>
               <View style={{ marginTop: 20 }}>
                 <ServiceItem

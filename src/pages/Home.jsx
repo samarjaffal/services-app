@@ -9,7 +9,7 @@ export const Home = ({ navigation }) => {
     <AppLayout>
       <ScrollView showsVerticalScrollIndicator={false}>
         <ListOfCategories navigation={navigation} />
-        <ListOfServices navigation={navigation} title='Servicios recientes' />
+        <ListOfServices navigation={navigation} title='Servicios recientes' slice={6} />
       </ScrollView>
     </AppLayout>
 

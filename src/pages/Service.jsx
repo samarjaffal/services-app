@@ -143,6 +143,7 @@ export const Service = ({ navigation }) => {
               title='Otros servicios similares'
               categoryId={service?.category?.id}
               selectedService={service?.id}
+              slice={3}
             />
           </View>
         </View>
