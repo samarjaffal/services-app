@@ -35,7 +35,7 @@ export const ListOfServices = ({ title = 'Servicios', categoryId, filterByName, 
       <Text style={styles.title}>{title}</Text>
       {
           services.map((service, index) => (
-            <TouchableOpacity key={index} onPress={() => navigation.navigate('Service', { service })}>
+            <TouchableOpacity key={index} onPress={() => navigation.push('Service', { service })}>
               <View style={{ marginTop: 20 }}>
                 <ServiceItem
                   id={service.id}
