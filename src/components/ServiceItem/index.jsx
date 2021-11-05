@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.white,
     padding: 20,
     borderRadius: 10,
+    width: 300,
     ...theme.common.shadowProp
   },
   flexRow: {

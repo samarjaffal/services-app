@@ -17,10 +17,11 @@ const styles = StyleSheet.create({
   }
 })
 
-export const Button = ({ color, text, textColor, onClick = null, disabled = false }) => {
+export const Button = ({ color, text, textColor, paddingVertical, onClick = null, disabled = false }) => {
   const buttonStyles = {
     ...styles.button,
     backgroundColor: color || styles.button.backgroundColor,
+    paddingVertical: paddingVertical || 10,
     opacity: disabled ? 0.5 : 1
   }
 

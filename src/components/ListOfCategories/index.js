@@ -6,21 +6,19 @@ import React from 'react'
 import theme from './../../styles/theme'
 import { useCategories } from './../../hooks/useCategories'
 
-export const ListOfCategories = ({ navigation }) => {
-  const { loading, categories } = useCategories()
-
-  if (loading) {
-    return (
-      <View style={{
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginTop: 30
-      }}
-      ><ActivityIndicator size='small' color='#0000ff' />
-      </View>
-    )
-  }
+export const ListOfCategories = ({ navigation, categories }) => {
+  // if (loading) {
+  //   return (
+  //     <View style={{
+  //       flex: 1,
+  //       alignItems: 'center',
+  //       justifyContent: 'center',
+  //       marginTop: 30
+  //     }}
+  //     ><ActivityIndicator size='small' color='#0000ff' />
+  //     </View>
+  //   )
+  // }
 
   return (
     <View>
