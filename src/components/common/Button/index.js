@@ -4,14 +4,16 @@ import { StyleSheet, Text, Pressable, Alert } from 'react-native'
 const styles = StyleSheet.create({
   button: {
     backgroundColor: '#5271FF',
-    borderRadius: 20,
+    borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 8,
+    paddingVertical: 16,
     paddingHorizontal: 20
   },
   buttonText: {
-    color: '#fff'
+    color: '#fff',
+    fontSize: 15,
+    fontWeight: 'bold'
   }
 })
 

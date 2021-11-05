@@ -20,7 +20,7 @@ const screens = {
   Service: {
     screen: Service,
     navigationOptions: ({ navigation }) => ({
-      title: 'Servicio'
+      title: 'Servicios'
     })
   },
   Categories: {

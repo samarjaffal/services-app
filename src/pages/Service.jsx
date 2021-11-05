@@ -41,33 +41,42 @@ export const Service = ({ navigation }) => {
   const service = navigation.getParam('service')
   const owner = `${service?.user?.name} ${service?.user?.lastName}`
   return (
+
     <AppLayout>
+
+      <View style={{
+        width: 'auto',
+        height: 67,
+        backgroundColor: service?.category?.colorRGBA,
+        position: 'absolute',
+        left: 0,
+        top: 0,
+        bottom: 0,
+        right: 0,
+        flex: 1
+      }}
+      />
+      <Text style={{ color: theme.colors.white, textAlign: 'right' }}>
+        {service?.category?.name}
+      </Text>
+      <Image
+        style={styles.avatar}
+        source={{ uri: service?.user?.avatar }}
+      />
+
+      <Text style={styles.owner}>{owner}</Text>
+      <Text style={styles.service}>{service?.name}</Text>
+      <Text style={styles.location}>Margarita, Pampatar.</Text>
+
       <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={styles.container}>
-          <View style={styles.card}>
-            <Text style={{ color: service?.category?.colorHex }}>
-              {service?.category?.name}
-            </Text>
-            <View style={{ ...styles.flexCenter, marginTop: 20 }}>
-              <Image
-                style={styles.avatar}
-                source={{ uri: service?.user?.avatar }}
-              />
-              <Text style={{ ...styles.owner, marginTop: 8 }}>{owner}</Text>
-              <Text style={styles.service}>{service?.name}</Text>
-            </View>
-            <View>
-              <Text style={styles.information}>Información</Text>
-              <Text style={styles.description}>{service?.description}</Text>
-            </View>
+        <View style={{ marginTop: 5 }}>
+          <Text style={styles.information}>Información</Text>
+          <Text style={styles.description}>
+            {service?.description}
+          </Text>
+        </View>
 
-            <View>
-              <Text style={styles.information}>Ubicación</Text>
-              <Text style={styles.description}>Margarita, Pampatar.</Text>
-            </View>
-
-            {/* Social medial */}
-            {(service.user.instagram ||
+        {(service.user.instagram ||
               service.user.facebook ||
               service.user.web) && (
                 <>
@@ -77,7 +86,7 @@ export const Service = ({ navigation }) => {
                   <View
                     style={{
                       flexDirection: 'row',
-                      justifyContent: 'space-between',
+                      // justifyContent: 'space-between',
                       flexWrap: 'wrap'
                     }}
                   >
@@ -86,7 +95,8 @@ export const Service = ({ navigation }) => {
                         service?.user[s.keyName] && (
                           <TouchableOpacity
                             style={{
-                              flexBasis: '48%',
+                              // flexBasis: '48%',
+                              marginLeft: index > 0 ? 10 : 0,
                               marginTop: 10,
                               padding: 10,
                               backgroundColor: s.color,
@@ -104,7 +114,7 @@ export const Service = ({ navigation }) => {
                               }}
                             >
                               {s.icon}
-                              <Text
+                              {/* <Text
                                 style={{
                                   color: theme.colors.white,
                                   fontWeight: theme.fontWeights.bold,
@@ -113,42 +123,39 @@ export const Service = ({ navigation }) => {
                                 }}
                               >
                                 {s.name}
-                              </Text>
+                              </Text> */}
                             </View>
                           </TouchableOpacity>
                         )
                     )}
                   </View>
                 </>
-            )}
+        )}
 
-            <View style={{ marginTop: 20 }}>
-              {/* <Text style={styles.textMessage}>
-                Al solicitar el servicio, recibirás un correo electrónico con los
-                datos de contacto.
-              </Text> */}
-              <View style={{ marginTop: 10 }}>
-                <Button
-                  text='Solicitar Servicio'
-                  color={service?.category?.colorHex}
-                  onClick={() =>
-                    navigation.navigate('ServiceOptions', { service })}
-                />
-              </View>
-            </View>
-          </View>
-          <View style={{ paddingVertical: 20 }}>
-            <ListOfServices
-              navigation={navigation}
-              title='Otros servicios similares'
-              categoryId={service?.category?.id}
-              selectedService={service?.id}
-              slice={3}
-            />
-          </View>
+        <View style={{ marginTop: 20 }}>
+          <Button
+            text='Contáctame'
+            color={service?.category?.colorHex}
+            textColor={theme.colors.white}
+            onClick={() =>
+              navigation.navigate('ServiceOptions', { service })}
+          />
+        </View>
+
+        <View style={styles.hr} />
+
+        <View style={{ paddingBottom: 10 }}>
+          <ListOfServices
+            navigation={navigation}
+            title={`Más servicios de ${service?.user.name}`}
+            categoryId={service?.category?.id}
+            selectedService={service?.id}
+            slice={3}
+          />
         </View>
       </ScrollView>
     </AppLayout>
+
   )
 }
 
@@ -172,30 +179,47 @@ const styles = StyleSheet.create({
   avatar: {
     width: 120,
     height: 120,
-    borderRadius: 10
+    borderRadius: 10,
+    top: -15
   },
   service: {
-    color: theme.colors.background,
-    marginBottom: 10,
-    textAlign: 'center',
-    fontWeight: 'bold'
+    color: theme.colors.white,
+    marginBottom: 15,
+    fontSize: theme.fontSizes.title,
+    fontWeight: '500'
+  },
+  location: {
+    color: theme.colors.white,
+    opacity: 0.8,
+    fontWeight: 'bold',
+    marginTop: -10,
+    paddingBottom: 20
   },
   description: {
-    paddingVertical: 8,
-    color: theme.colors.background
+    color: theme.colors.white,
+    fontWeight: '500',
+    fontSize: theme.fontSizes.subtitle
   },
   owner: {
-    fontSize: theme.fontSizes.title,
+    fontSize: theme.fontSizes.bigTitle,
     fontWeight: 'bold',
-    color: theme.colors.background
+    color: theme.colors.white
   },
   information: {
     fontWeight: 'bold',
-    fontSize: theme.fontSizes.body,
-    color: theme.colors.background
+    fontSize: theme.fontSizes.title,
+    color: theme.colors.white,
+    marginBottom: 10
   },
   textMessage: {
     fontSize: theme.fontSizes.small,
     color: '#C2C2C2'
+  },
+  hr: {
+    borderBottomColor: theme.colors.white,
+    borderBottomWidth: 1,
+    marginTop: 30,
+    marginBottom: 20,
+    opacity: 0.5
   }
 })
