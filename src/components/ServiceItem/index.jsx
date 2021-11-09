@@ -3,9 +3,10 @@ import { Image, StyleSheet, Text, View } from 'react-native'
 import theme from '../../styles/theme'
 import { Button } from '../common/Button'
 
-export const ServiceItem = ({ id, name, avatar, owner, description, category }) => {
+export const ServiceItem = ({ id, name, avatar, owner, description, category, size = 300 }) => {
+  const cardStyle = { ...styles.card, width: size }
   return (
-    <View key={id} style={styles.card}>
+    <View key={id} style={cardStyle}>
       <View style={{ position: 'absolute', right: 10, bottom: 10 }}>
         <Text style={{ color: category.colorHex, fontWeight: '500' }}>{category.name}</Text>
       </View>
@@ -27,6 +28,7 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: theme.colors.white,
     padding: 20,
+    paddingBottom: 25,
     borderRadius: 10,
     width: 300,
     ...theme.common.shadowProp

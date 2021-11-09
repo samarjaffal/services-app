@@ -8,6 +8,7 @@ import { AppLayout } from './../components/Layout/AppLayout/index'
 
 export const Categories = ({ navigation }) => {
   const { loading, categories } = useCategories()
+  const services = navigation.getParam('services')
 
   if (loading) return <Text>'Cargando...'</Text>
 
@@ -20,7 +21,7 @@ export const Categories = ({ navigation }) => {
             {categories.map((category) => {
               return (
                 <View style={{ flexBasis: '25%', marginTop: 20 }} key={category.id}>
-                  <TouchableOpacity onPress={() => navigation.navigate('Category', { category })}>
+                  <TouchableOpacity onPress={() => navigation.navigate('Category', { category, services })}>
                     <CategoryItem
                       name={category.name}
                       color={category.colorRGBA}

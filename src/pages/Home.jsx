@@ -35,7 +35,7 @@ export const Home = ({ navigation }) => {
     <AppLayout paddingHorizontal={0}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={{ paddingHorizontal: 20 }}>
-          <ListOfCategories navigation={navigation} categories={categories} />
+          <ListOfCategories navigation={navigation} categories={categories} services={services} />
         </View>
         {/* <ListOfServices navigation={navigation} title='Servicios recientes' slice={6} /> */}
 

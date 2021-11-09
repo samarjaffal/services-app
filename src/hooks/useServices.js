@@ -15,6 +15,7 @@ export const useServices = ({ categoryId, filterByName, selectedService }) => {
       service.user = user.data()
       service.category = category.data()
       service.category.id = category.id
+      service.user.id = user.id
       service.id = doc.id
       services.push(service)
     }

@@ -5,37 +5,23 @@ import { Link } from 'react-router-native'
 import theme from './../../styles/theme'
 import { useServices } from '../../hooks/useServices'
 
-export const ListOfServices = ({ title = 'Servicios', categoryId, filterByName, selectedService, navigation, slice = undefined }) => {
-  const { loading, services } = useServices({ categoryId, filterByName, selectedService })
+export const ListOfServices = ({ title = 'Servicios', services, categoryId, filterByName, selectedService, navigation, slice = undefined }) => {
+  let filteredServices = services
 
-  if (loading) {
-    return (
-      <View style={{
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginTop: 30
-      }}
-      ><ActivityIndicator size='small' color='#0000ff' />
-      </View>
-    )
+  if (categoryId) {
+    filteredServices = services.filter((service) => service.category.id === categoryId && service.id !== selectedService)
   }
 
-  if (services.length === 0) {
-    return (
-      <View>
-        <Text style={styles.title}>{title}</Text>
-        <Text style={{ color: theme.colors.white, fontSize: theme.fontSizes.subheading, marginTop: 10 }}> 🔍 No se encontraron servicios</Text>
-      </View>
-    )
+  if (filterByName) {
+    filteredServices = services.filter((service) => service.name.toLowerCase().includes(filterByName.toLowerCase()))
   }
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{title}</Text>
       {
-          services.slice(0, slice).map((service, index) => (
-            <TouchableOpacity key={index} onPress={() => navigation.push('Service', { service })}>
+          filteredServices.slice(0, slice).map((service, index) => (
+            <TouchableOpacity key={index} onPress={() => navigation.push('Service', { service, services })}>
               <View style={{ marginTop: 20 }}>
                 <ServiceItem
                   id={service.id}
@@ -44,6 +30,7 @@ export const ListOfServices = ({ title = 'Servicios', categoryId, filterByName, 
                   owner={`${service.user.name} ${service.user.lastName}`}
                   category={service.category}
                   description={service.description}
+                  size='auto'
                 />
               </View>
             </TouchableOpacity>

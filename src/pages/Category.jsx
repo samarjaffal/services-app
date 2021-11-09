@@ -8,7 +8,7 @@ import { AppLayout } from '../components/Layout/AppLayout'
 
 export const Category = ({ navigation }) => {
   const category = navigation.getParam('category')
-
+  const services = navigation.getParam('services')
   return (
     <AppLayout>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -23,7 +23,7 @@ export const Category = ({ navigation }) => {
               key={category?.id}
             />
             <View style={{ marginVertical: -30, marginBottom: 0 }}>
-              <ListOfServices navigation={navigation} title='' categoryId={category.id} />
+              <ListOfServices navigation={navigation} title='' categoryId={category.id} services={services} />
             </View>
 
           </View>

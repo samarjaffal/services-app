@@ -6,7 +6,7 @@ import React from 'react'
 import theme from './../../styles/theme'
 import { useCategories } from './../../hooks/useCategories'
 
-export const ListOfCategories = ({ navigation, categories }) => {
+export const ListOfCategories = ({ navigation, categories, services = [] }) => {
   // if (loading) {
   //   return (
   //     <View style={{
@@ -24,13 +24,13 @@ export const ListOfCategories = ({ navigation, categories }) => {
     <View>
       <View style={styles.headerContainer}>
         <Text style={styles.title}>Categorías</Text>
-        <Button text='Ver más...' color={theme.colors.primary} textColor={theme.colors.white} onClick={() => navigation.navigate('Categories')} />
+        <Button text='Ver más...' color={theme.colors.primary} textColor={theme.colors.white} onClick={() => navigation.navigate('Categories', { services })} />
       </View>
 
       <View style={styles.listContainer}>
         {categories.slice(0, 4).map((category) => {
           return (
-            <TouchableOpacity key={category.id} onPress={() => navigation.navigate('Category', { category })}>
+            <TouchableOpacity key={category.id} onPress={() => navigation.navigate('Category', { category, services })}>
               <CategoryItem
                 name={category.name}
                 color={category.colorRGBA}

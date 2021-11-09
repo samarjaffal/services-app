@@ -15,6 +15,7 @@ import theme from './../styles/theme'
 import { InstagramSVG } from '../components/Icons/InstagramSVG'
 import { FacebookSVG } from '../components/Icons/FacebookSVG'
 import { WebSVG } from '../components/Icons/WebSVG'
+import { ServicesFromUser } from '../components/ServicesFromUser'
 
 const socialMedia = [
   {
@@ -39,6 +40,7 @@ const socialMedia = [
 
 export const Service = ({ navigation }) => {
   const service = navigation.getParam('service')
+  const services = navigation.getParam('services')
   const owner = `${service?.user?.name} ${service?.user?.lastName}`
   return (
 
@@ -145,12 +147,12 @@ export const Service = ({ navigation }) => {
         <View style={styles.hr} />
 
         <View style={{ paddingBottom: 10 }}>
-          <ListOfServices
+          <ServicesFromUser
             navigation={navigation}
+            userId={service?.user?.id}
+            services={services}
+            service={service}
             title={`Más servicios de ${service?.user.name}`}
-            categoryId={service?.category?.id}
-            selectedService={service?.id}
-            slice={3}
           />
         </View>
       </ScrollView>

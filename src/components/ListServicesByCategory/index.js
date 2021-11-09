@@ -20,7 +20,7 @@ export const ListServicesByCategory = ({ title = 'Servicios', services, category
         showsHorizontalScrollIndicator={false}
         data={services.filter(service => service.category.id === categoryId).slice(0, slice)}
         renderItem={({ item, index }) => (
-          <TouchableOpacity onPress={() => navigation.push('Service', { service: item })}>
+          <TouchableOpacity onPress={() => navigation.push('Service', { service: item, services })}>
             <View style={{ marginTop: 10, marginLeft: index > 0 ? 15 : 0 }}>
               <ServiceItem
                 id={item.id}
