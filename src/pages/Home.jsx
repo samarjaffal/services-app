@@ -43,7 +43,7 @@ export const Home = ({ navigation }) => {
 
           <ListServicesByCategory title='Porque nos interesa tu salud' navigation={navigation} services={services} slice={5} categoryId={healthCategory} />
 
-          <ListServicesByCategory title='¡Recuerda ponerte hermosa!' navigation={navigation} services={services} slice={5} categoryId={beautyCategory} />
+          <ListServicesByCategory title='¡Dedica tiempo para ti!' navigation={navigation} services={services} slice={5} categoryId={beautyCategory} />
 
           <ListServicesByCategory title='¿Buscas ayuda con tu proyecto de tecnología?' navigation={navigation} services={services} slice={5} categoryId={techCategory} />
         </View>

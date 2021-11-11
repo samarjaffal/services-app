@@ -68,7 +68,7 @@ export const Service = ({ navigation }) => {
 
       <Text style={styles.owner}>{owner}</Text>
       <Text style={styles.service}>{service?.name}</Text>
-      <Text style={styles.location}>Margarita, Pampatar.</Text>
+      <Text style={styles.location}>{service?.address !== '' ? `${service?.address}. ` : ''}Nueva Esparta, Venezuela.</Text>
 
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={{ marginTop: 5 }}>
@@ -139,6 +139,7 @@ export const Service = ({ navigation }) => {
             text='Contáctame'
             color={service?.category?.colorHex}
             textColor={theme.colors.white}
+            paddingVertical={15}
             onClick={() =>
               navigation.navigate('ServiceOptions', { service })}
           />
@@ -191,8 +192,8 @@ const styles = StyleSheet.create({
     fontWeight: '500'
   },
   location: {
-    color: theme.colors.white,
-    opacity: 0.8,
+    color: theme.colors.secondary,
+    opacity: 0.6,
     fontWeight: 'bold',
     marginTop: -10,
     paddingBottom: 20
