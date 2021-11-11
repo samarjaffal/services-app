@@ -1,7 +1,6 @@
 import React from 'react'
-import { ActivityIndicator, ScrollView, Text, View, StyleSheet } from 'react-native'
+import { ActivityIndicator, ScrollView, View, StyleSheet } from 'react-native'
 import { ListOfCategories } from '../components/ListOfCategories'
-import { ListOfServices } from '../components/ListOfServices'
 import { ListServicesByCategory } from '../components/ListServicesByCategory'
 import { AppLayout } from '../components/Layout/AppLayout'
 import { useServices } from '../hooks/useServices'

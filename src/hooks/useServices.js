@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
+import * as SplashScreen from 'expo-splash-screen'
 import { db } from '../../database/firebase'
 
 export const useServices = ({ categoryId, filterByName, selectedService }) => {
@@ -24,29 +25,24 @@ export const useServices = ({ categoryId, filterByName, selectedService }) => {
   }, [])
 
   useEffect(() => {
-    setLoading(true)
-    db.collection('services').onSnapshot(async (querySnapshot) => {
-      mapResults(querySnapshot).then((result) => {
-        setLoading(false)
-        if (categoryId) return filterServices(result)
-        if (filterByName) return searchService(result)
-        setServices(result)
-      })
-    })
-  }, [categoryId])
-
-  const filterServices = (services) => {
-    let filteredServices = services.filter((service) => service.category.id === categoryId)
-    if (selectedService) {
-      filteredServices = filteredServices.filter(service => service.id !== selectedService)
+    async function prepare () {
+      try {
+        // Keep the splash screen visible while we fetch resources
+        await SplashScreen.preventAutoHideAsync()
+        setLoading(true)
+        db.collection('services').onSnapshot(async (querySnapshot) => {
+          mapResults(querySnapshot).then(async (result) => {
+            setLoading(false)
+            setServices(result)
+            await SplashScreen.hideAsync()
+          })
+        })
+      } catch (e) {
+        console.warn(e)
+      }
     }
-    setServices(filteredServices)
-  }
-
-  const searchService = (services) => {
-    const filteredServices = services.filter((service) => service.name.toLowerCase().includes(filterByName.toLowerCase()))
-    setServices(filteredServices)
-  }
+    prepare()
+  }, [categoryId])
 
   return {
     services,
