@@ -1,5 +1,5 @@
 # Services App 
-Es una aplicación desarrollada con fines prácticos y de aprendizaje como una forma de ofrecer los diferentes servicios de profesionales independientes en una sola aplicación para la Isla de Margarita, Venezuela.
+Es una aplicación desarrollada con fines prácticos y de aprendizaje, como una forma de ofrecer los diferentes servicios de profesionales independientes en un solo lugar.
 
 ## Tecnologías / Herramientas usadas
   - React Native con Expo
